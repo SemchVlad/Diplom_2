@@ -72,6 +72,20 @@ public class StellarBurgersRestApiUtils {
     public static Response getIngredients() {
         return given().headers("Content-Type", ContentType.JSON, "Accept",
                         ContentType.JSON).auth().none()
-                .post("/api/ingredients");
+                .get("/api/ingredients");
+    }
+
+    @Step("Получение информации о заказах")
+    public static Response getOrders() {
+        return given().headers("Content-Type", ContentType.JSON, "Accept",
+                        ContentType.JSON).auth().none()
+                .get("/api/orders");
+    }
+
+    @Step("Получение информации о заказах")
+    public static Response getOrders(String accessToken) {
+        return given().headers("Authorization", accessToken,
+                        "Content-Type", ContentType.JSON)
+                .get("/api/orders");
     }
 }
